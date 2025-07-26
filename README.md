@@ -41,7 +41,7 @@ To analyze greenhouse gas emissions data and predict future trends by:
 - Visualized model performance using a scatterplot of Actual vs. Predicted emissions.
 
 📊 Output:
-- - **`correlation_heatmap.png`** – Heatmap of numeric feature correlations.
+- **`correlation_heatmap.png`** – Heatmap of numeric feature correlations.
 - **`feature_importance.png`** – Bar chart of XGBoost feature importances.
 - **`final_model.pkl`** – Serialized XGBoost model.
 ---
