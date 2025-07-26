@@ -20,7 +20,7 @@ os.makedirs(model_dir, exist_ok=True)
 # Load the dataset
 df = pd.read_csv(input_file)
 
-# Clean the data: remove unnamed columns and drop missing values
+# Cleaned the dataset by eliminating unnamed columns and handling missing values through row removal.
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
 df.dropna(inplace=True)
 
