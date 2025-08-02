@@ -1,7 +1,4 @@
-# 📘 GHG Emissions Analysis Project  
-## 🧭 Status: **Phase 2**
-
----
+# 📘 GHG Emissions Analysis Project 
 
 ## 🔰 Project Title:
 **Analyzing Greenhouse Gas (GHG) Emissions Across US Industries**
@@ -9,57 +6,66 @@
 ---
 
 ## 📌 Objective:
-To analyze greenhouse gas emissions data and predict future trends by:
+The objective of this project is to analyze and predict greenhouse gas emissions across various industries in the United States using data science and machine learning. The primary goals include:
 
-- Merging, cleaning, and standardizing raw emission factor datasets.
-- Identifying key contributors and emission trends by industry.
-- Training a machine learning model to predict total emissions.
-- Visualizing actual vs. predicted emissions for performance evaluation.
-
----
-
-## ✅ Phases Completed
-
-### 🧪 **Phase 1: Data Cleaning & Initial Analysis**
-- Imported raw emissions datasets and validated required columns.
-- Cleaned data, handled missing values, standardized column names.
-- Converted `Year` column to integer format.
-- Identified **top 5 polluting industries** based on cumulative emissions.
-- Created a time-series plot of emissions for those top industries.
-
-📊 Output:
-- **`top5_industries_emissions.png`**  
-  A line graph showing GHG emission trends for the top 5 industries.
+- Cleaning and merging raw datasets from multiple sources.
+- Identifying key polluting industries.
+- Understanding time-based emission trends.
+- Predicting future emissions using machine learning.
+- Visualizing insights and model performance.
 
 ---
 
-### 🤖 **Phase 2: Model Building & Evaluation**
-- Encoded categorical columns: `Commodity Code`, `Description`, `Substance`, `Unit`.
-- Trained a regression model using **XGBoost (XGBRegressor)**.
-- Evaluated model using **R² Score** and **Mean Squared Error**.
-- Saved predictions and trained model for reuse.
-- Visualized model performance using a scatterplot of Actual vs. Predicted emissions.
+## 🧠 Project Summary:
 
-📊 Output:
-- **`correlation_heatmap.png`** – Heatmap of numeric feature correlations.
-- **`feature_importance.png`** – Bar chart of XGBoost feature importances.
-- **`final_model.pkl`** – Serialized XGBoost model.
----
+This end-to-end data project explores greenhouse gas emissions data from US industries and applies machine learning for predictive analysis. It includes:
 
-## 📈 Results (as of Phase 2)
-- ✅ Model trained on cleaned emissions data.
-- ✅ R² Score and MSE calculated to evaluate regression accuracy.
-- ✅ Visual insights generated for actual vs. predicted performance.
+- Data pre-processing and merging from multiple raw files.
+- Feature engineering and encoding of categorical data.
+- Visualization of top emitters and correlation analysis.
+- Training of an XGBoost Regressor model.
+- Evaluation using R² score and Mean Squared Error.
+- Saving final outputs and the trained model locally.
 
 ---
 
-## ⚙️ Tools & Technologies Used
+## 📊 Key Outputs:
+
+| Filename                      | Description                                                                 |
+|------------------------------|-----------------------------------------------------------------------------|
+| `top5_industries_emissions.png` | Line chart for emissions by top 5 industries                              |
+| `correlation_heatmap.png`    | Correlation matrix of key numeric features                                 |
+| `feature_importance.png`     | Feature importance plot from XGBoost model                                 |
+| `predicted_vs_actual.png`    | Comparison of predicted vs actual emissions                                |
+| `final_model.pkl`            | Serialized trained XGBoost regression model                                |
+
+---
+
+## 📈 Results Summary:
+
+- ✅ **Cleaned Records:** 1848  
+- ✅ **Model Used:** XGBoost Regressor  
+- ✅ **R² Score:** 0.9966  
+- ✅ **MSE:** 0.0002  
+- ✅ **Top Industries Identified:** Based on cumulative emission contributions  
+- ✅ **Visual Insights:** Time-series trends, feature correlations, and prediction comparisons
+
+---
+
+## ⚙️ Tools & Technologies:
+
 - **Python**
-- **Pandas** – Data manipulation
-- **Matplotlib & Seaborn** – Data visualization
-- **XGBoost (XGBRegressor)** – Predictive modeling
-- **Scikit-learn** – Data splitting, metrics, label encoding
-- **Joblib** – Model serialization
-- **VS Code** – Development environment
+- **Pandas & NumPy**
+- **Matplotlib & Seaborn**
+- **Scikit-learn**
+- **XGBoost**
+- **Joblib**
+- **VS Code**
+
+---
+
+## ✅ Conclusion:
+
+This project demonstrates a complete workflow for analyzing greenhouse gas emissions using Python. It highlights how data science tools can help uncover pollution patterns and forecast future emissions. The approach can support environmental policy, academic research, and industry monitoring.
 
 ---

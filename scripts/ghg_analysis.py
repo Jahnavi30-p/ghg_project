@@ -12,9 +12,9 @@ from sklearn.metrics import r2_score, mean_squared_error
 
 # Set paths
 input_file = "data/emissions.csv"
-output_dir = "data/visuals"
-model_dir = "data/models"
-os.makedirs(output_dir, exist_ok=True)
+visuals_dir = "visuals"
+model_dir = "models"
+os.makedirs(visuals_dir, exist_ok=True)
 os.makedirs(model_dir, exist_ok=True)
 
 # Load the dataset
@@ -58,7 +58,7 @@ print(f"✅ Mean Squared Error: {mse:.4f}")
 
 # Save predictions to CSV
 results_df = pd.DataFrame({"Actual": y_test, "Predicted": y_pred})
-results_df.to_csv(os.path.join(output_dir, "xgb_predictions.csv"), index=False)
+results_df.to_csv(os.path.join(visuals_dir, "xgb_predictions.csv"), index=False)
 
 # Save the trained model
 joblib.dump(model, os.path.join(model_dir, "final_model.pkl"))
@@ -74,5 +74,41 @@ plt.ylabel("Predicted Emissions")
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
-plt.savefig(os.path.join(output_dir, "xgb_scatterplot.png"))
+plt.savefig(os.path.join(visuals_dir, "xgb_scatterplot.png"))
 plt.show()
+
+# Plot Feature Importance
+importances = model.feature_importances_
+feature_names = X.columns
+
+plt.figure(figsize=(12, 6))
+sns.barplot(x=importances, y=feature_names)
+plt.title("Feature Importance (XGBoost)")
+plt.tight_layout()
+plt.savefig(os.path.join(visuals_dir, "feature_importance.png"))
+plt.show()
+
+# Plot Correlation Heatmap
+plt.figure(figsize=(10, 8))
+sns.heatmap(df.corr(), annot=True, cmap="coolwarm", fmt=".2f")
+plt.title("Correlation Heatmap")
+plt.xticks(rotation=90)
+plt.tight_layout()
+plt.savefig(os.path.join(visuals_dir, "correlation_heatmap.png"))
+plt.show()
+
+# Plot Top 5 Industries Over Time (if columns exist)
+if {'Description', 'Year', 'Total Emissions'}.issubset(df.columns):
+    top5 = df.groupby("Description")["Total Emissions"].sum().nlargest(5).index
+    df_top5 = df[df["Description"].isin(top5)]
+
+    plt.figure(figsize=(14, 7))
+    sns.lineplot(data=df_top5, x="Year", y="Total Emissions", hue="Description", marker="o")
+    plt.title("Top 5 US Industry GHG Emissions Over Time")
+    plt.ylabel("Total Emissions (CO₂-equivalent)")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(os.path.join(visuals_dir, "top5_industries_emissions.png"))
+    plt.show()
+
+print("🎯 All done! Model, plots, and predictions saved successfully.")
